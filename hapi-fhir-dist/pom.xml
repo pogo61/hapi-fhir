@@ -20,11 +20,11 @@
 			<artifactId>hapi-fhir-base</artifactId>
 			<version>1.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
+		<!--  dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu</artifactId>
 			<version>1.1-SNAPSHOT</version>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu2</artifactId>

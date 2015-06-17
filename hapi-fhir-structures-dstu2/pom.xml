@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>hapi-fhir-structures-dstu2</artifactId>
-	<packaging>jar</packaging>
+	<packaging>bundle</packaging>
 
 	<name>HAPI FHIR Structures - DSTU2 (FHIR v0.5.0)</name>
 
@@ -19,6 +19,7 @@
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-base</artifactId>
 			<version>1.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -79,36 +80,35 @@
 			<version>${jetty_version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback_version}</version>
-			<optional>true</optional>
-			<scope>test</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.ebaysf.web</groupId>
 			<artifactId>cors-filter</artifactId>
 			<version>${ebay_cors_filter_version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		
+		<!-- Client -->
 		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf</artifactId>
-			<version>${thymeleaf-version}</version>
-			<scope>test</scope>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${apache_httpclient_version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.phloc</groupId>
-			<artifactId>phloc-schematron</artifactId>
-			<version>${phloc_schematron_version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.phloc</groupId>
-			<artifactId>phloc-commons</artifactId>
-			<version>${phloc_commons_version}</version>
-			<scope>test</scope>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${apache_httpcore_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 
@@ -169,6 +169,51 @@
 			<version>${spring_security_version}</version> <scope>test</scope> </dependency> 
 			<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-jwt</artifactId> 
 			<version>1.0.2.RELEASE</version> <scope>test</scope> </dependency> -->
+			
+		<!-- Akana Container requires -->	
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.phloc</groupId>
+			<artifactId>phloc-schematron</artifactId>
+			<version>${phloc_schematron_version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.phloc</groupId>
+			<artifactId>phloc-commons</artifactId>
+			<version>${phloc_commons_version}</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf-version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>4.4.1</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -284,6 +329,77 @@
 					<buildDatatypes>true</buildDatatypes>
 				</configuration>
 			</plugin>
+			<!-- 
+				Tell Maven to create bundles for the Felix OSGi container
+			-->
+			<plugin>
+		        <groupId>org.apache.felix</groupId>
+		        <artifactId>maven-bundle-plugin</artifactId>
+		        <extensions>true</extensions>
+		        <version>2.4.0</version>
+		        <configuration>
+		          <instructions>
+		          	<Bundle-SymbolicName>hapi-fhir-structures-dstu2</Bundle-SymbolicName>
+		            <_exportcontents>
+		            	ca.uhn.fhir.model.dstu2.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.rest.server.provider.dstu2.*;version=1.1-SNAPSHOT
+		            </_exportcontents>
+		           	<Private-Package>
+		           		COM.jrockit.reflect;resolution:=optional,
+		           		jrockit.vm.*;resolution:=optional,
+		           		com.ctc.wstx.*;resolution:=optional,
+		           		groovy.lang.*;resolution:=optional,
+		           		javax.annotation.concurrent.*;resolution:=optional,
+		           		javax.json.*;resolution:=optional,
+		           		ognl.*;resolution:=optional,
+		           		org.apache.commons.*;resolution:=optional,
+		           		org.apache.http.client.*;version=${apache_httpcore_version};resolution:=optional,
+		           		org.apache.naming.*;resolution:=optional,
+		           		org.apache.http.conn.*;resolution:=optional,
+		           		org.apache.http.entity.*;resolution:=optional,
+		           		org.apache.http.cookie.*;resolution:=optional,
+		           		org.apache.http.auth.*;resolution:=optional,
+		           		org.apache.http.message.*;resolution:=optional,
+		           		org.apache.http.concurrent.*;resolution:=optional,
+		           		org.codehaus.commons.*;resolution:=optional,
+		           		org.codehaus.groovy.*;resolution:=optional,
+		           		org.codehaus.janino.*;resolution:=optional,
+		           		org.cyberneko.html.*;resolution:=optional,
+		           		org.eclipse.jetty.*;resolution:=optional,
+		           		org.slf4j.*;version=${slf4j_version};resolution:=optional,
+		           		org.unbescape.*;resolution:=optional,
+		           		org.codehaus.stax2.*;resolution:=optional,
+		           		com.phloc.schematron.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.method.*;resolution:=optional,
+		           		ca.uhn.fhir.i18n.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.annotation.*;resolution:=optional,
+		           		ca.uhn.fhir.narrative.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.gclient.*;resolution:=optional,,
+		           		ca.uhn.fhir.model.valueset.*;resolution:=optional,
+		           		ca.uhn.fhir.store.*;resolution:=optional,
+		           		ca.uhn.fhir.model.base.composite.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.param.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.server.*;resolution:=optional,
+		           		ca.uhn.fhir.parser.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.api.*;resolution:=optional,
+		           		ca.uhn.fhir.rest.client.*;resolution:=optional,
+		           		ca.uhn.fhir.context.*;resolution:=optional,
+		           		ca.uhn.fhir.model.base.resource.*;resolution:=optional,
+		           		ca.uhn.fhir.model.api.*;resolution:=optional,
+		           		<!--  ca.uhn.fhir.model.dstu.valueset.*;resolution:=optional,-->
+		           		ca.uhn.fhir.model.view.*;resolution:=optional
+		           	</Private-Package>
+		           	<Import-Package>
+		           		!org.junit.*,
+		           		ch.qos.logback.*,
+		           		*
+		           	</Import-Package>
+		           	<Embed-Dependency>
+		           		*;scope=compile|runtime
+		           	</Embed-Dependency>
+		          </instructions>
+		        </configuration>
+		    </plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>

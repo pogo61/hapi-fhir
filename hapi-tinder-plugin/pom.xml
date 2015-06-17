@@ -28,15 +28,15 @@
 		for the structures
 		a version behind the main library. This is weird, but it works. 
 		-->
-		<dependency>
+		<!--  dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu</artifactId>
-			<version>0.9</version>
-		</dependency>
+			<version>1.0</version>
+		</dependency-->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu2</artifactId>
-			<version>0.9</version>
+			<version>1.0</version>
 		</dependency>
 
 		<dependency>
@@ -66,6 +66,14 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons_io_version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
+			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- Logging -->

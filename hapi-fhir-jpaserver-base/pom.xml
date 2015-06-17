@@ -23,7 +23,7 @@
 	</repositories>
 
 	<artifactId>hapi-fhir-jpaserver-base</artifactId>
-	<packaging>jar</packaging>
+	<packaging>bundle</packaging>
 
 	<name>HAPI FHIR JPA Server</name>
 
@@ -38,24 +38,37 @@
 					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!--  dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu</artifactId>
 			<version>1.1-SNAPSHOT</version>
 			<optional>true</optional>
-		</dependency>
+			<scope>provided</scope>
+		</dependency-->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu2</artifactId>
 			<version>1.1-SNAPSHOT</version>
 			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${slf4j_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>osgi-over-slf4j</artifactId>
+			<version>${slf4j_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -63,6 +76,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${logback_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -75,6 +89,7 @@
 			<artifactId>thymeleaf</artifactId>
 			<version>${thymeleaf-version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
@@ -82,12 +97,14 @@
 			<artifactId>phloc-schematron</artifactId>
 			<version>${phloc_schematron_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.phloc</groupId>
 			<artifactId>phloc-commons</artifactId>
 			<version>${phloc_commons_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- For UCUM -->
@@ -95,6 +112,8 @@
 			<groupId>org.jscience</groupId>
 			<artifactId>jscience</artifactId>
 			<version>${jscience_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- FHIR RI is pulled in for UCUM support, but we don't want any of its 
@@ -117,18 +136,21 @@
 			<artifactId>junit</artifactId>
 			<version>${junit_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<version>${derby_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
@@ -136,6 +158,7 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 
 
@@ -147,6 +170,8 @@
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -158,11 +183,15 @@
 					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -174,21 +203,29 @@
 					<groupId>xml-apis</groupId>
 				</exclusion>
 			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 			<version>${spring_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Hibernate -->
@@ -202,11 +239,15 @@
 					<groupId>xml-apis</groupId>
 				</exclusion>
 			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -218,36 +259,50 @@
 					<artifactId>ehcache-core</artifactId>
 				</exclusion>
 			</exclusions>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate_validator_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.0</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
 			<version>3.0.0</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.el</artifactId>
 			<version>3.0.0</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Misc -->
@@ -255,6 +310,8 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava_version}</version>
+			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		
 		<dependency>
@@ -262,34 +319,119 @@
 			<artifactId>jetty-servlets</artifactId>
 			<version>${jetty_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-servlet</artifactId>
 			<version>${jetty_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
 			<version>${jetty_version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-servlet</artifactId>
-			<version>${jetty_version}</version>
-			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-util</artifactId>
 			<version>${jetty_version}</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 		
+		<!-- Akana Felix Container -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-osgi</artifactId>
+			<version>4.3.10.Final</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 		
+		<dependency>
+			<groupId>org.hibernate.common</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>4.0.5.Final</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 		
+		<dependency>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<artifactId>paranamer</artifactId>
+			<version>2.7</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.thoughtworks.xstream</groupId>
+		  <artifactId>xstream</artifactId>
+		  <version>1.4.7</version>
+		  <optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.fabric3.api</groupId>
+			<artifactId>commonj</artifactId>
+			<version>1.1.1</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.22</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>2.4.3</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.fusesource.jansi</groupId>
+			<artifactId>jansi</artifactId>
+			<version>1.11</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.19.0-GA</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>commons-compiler</artifactId>
+			<version>2.7.8</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>2.7.8</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 
@@ -332,15 +474,21 @@
 				</configuration>
 				<!--
 				This needs to be uncommented in order for this plugin to work with
-				Hibernate 4.3+ (as of hibernate4-maven-plugin version 1.0.5)
+				Hibernate 4.3+ (as of hibernate4-maven-plugin version 1.0.5)-->
 				<dependencies>
 					<dependency>
 						<groupId>org.hibernate</groupId>
 						<artifactId>hibernate-core</artifactId>
 						<version>${hibernate_version}</version>
 					</dependency>
+					
+					<dependency>
+						<groupId>ca.uhn.hapi.fhir</groupId>
+						<artifactId>hapi-fhir-base</artifactId>
+						<version>1.1-SNAPSHOT</version>
+					  </dependency>
 				</dependencies>
-				-->
+
 				<executions>
 					<execution>
 						<id>o10g</id>
@@ -418,7 +566,7 @@
 						</configuration>
 					</execution>
 				</executions>
-				<dependencies>
+				<!--  dependencies>
 					<dependency>
 						<groupId>ca.uhn.hapi.fhir</groupId>
 						<artifactId>hapi-fhir-structures-dstu</artifactId>
@@ -429,8 +577,157 @@
 						<artifactId>hapi-fhir-structures-dstu2</artifactId>
 						<version>1.1-SNAPSHOT</version>
 					</dependency>
-				</dependencies>
+				</dependencies-->
 			</plugin>
+			<!-- 
+				Tell Maven to create bundles for the Felix OSGi container
+			-->
+			<plugin>
+		        <groupId>org.apache.felix</groupId>
+		        <artifactId>maven-bundle-plugin</artifactId>
+		        <extensions>true</extensions>
+		        <version>2.4.0</version>
+		        <configuration>
+		          <instructions>
+		          	<Bundle-SymbolicName>hapi-fhir-jpaserver-base</Bundle-SymbolicName>
+		            <_exportcontents>
+		            	javassist.*
+		            </_exportcontents>
+		            <Export-Package>
+		            	ca.uhn.fhir.jpa.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.jpa.dao.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.jpa.entity.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.jpa.provider.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.jpa.rp.*;version=1.1-SNAPSHOT,
+		            	ca.uhn.fhir.jpa.util.*;version=1.1-SNAPSHOT,
+		            </Export-Package>
+		           	<Private-Package>
+		           		!com.ctc.wstx.*,
+		           		!com.google.*,
+		           		!org.apache.commons.*,
+		           		!com.ibm.websphere.*,
+		           		!com.ibm.wsspi.*,
+		           		!com.sun.*,
+		           		!com.bea.*,
+		           		!javax.annotation.concurrent,
+		           		!javax.cache.*,
+		           		!javax.ejb.*,
+		           		!javax.enterprise.*,
+		           		!javax.inject.*,
+		           		!javax.interceptor.*,
+		           		!javax.jdo.*,
+		           		!javax.json.*,
+		           		!javax.*,
+		           		!joptsimple.*,
+		           		!net.sf.jasperreports.*,
+		           		!org.apache.http.*,
+		           		!org.apache.ivy.*,
+		           		!org.apache.log.*,
+		           		!org.apache.velocity.*,
+		           		!org.apache.openjpa.*,
+		           		!org.codehaus.jettison.*,
+		           		!org.codehaus.stax2.*,
+		           		!org.eclipse.*,
+		           		!org.hibernate.cache.*;version=0.0.0,
+		           		!org.hibernate.connection.*;version=0.0.0,
+		           		!org.hibernate.event.*;version=0.0.0,
+		           		!org.hibernate.impl.*;version=0.0.0,
+		           		!org.hibernate.transaction.*;version=0.0.0,
+		           		!org.hibernate.util.*;version=0.0.0,
+		           		!org.hibernate.validator.*;version=0.0.0,
+		           		!org.jaxen.*,
+		           		!org.jboss.*,
+		           		!org.jdom2.*,
+		           		!org.jruby.*,
+		           		!org.jsoup.*,
+		           		!org.junit.*,
+		           		!junit.*,
+		           		!org.kxml2.*,
+		           		!org.python.*,
+		           		org.slf4j.*;version=${slf4j_version},
+		           		!org.springframework.*,
+		           		!org.thymeleaf.*,
+		           		!org.xmlpull.*,
+		           		!org.yaml.*,
+		           		!org.zeroturnaround.*,
+		           		!antlr.*,
+		           		!bsh.*,
+		           		!com.mchange.v2.c3p0.*,
+		           		!net.sf.*,
+		           		!nu.xom.*,
+		           		!org.apache.commons.httpclient.*,
+		           		!org.apache.commons.vfs.*,
+		           		!org.apache.env.*,
+		           		!org.apache.oro.*,
+		           		!org.apache.regexp.*,
+		           		!org.apache.tools.*,
+		           		!org.apache.xerces.*,
+		           		!org.apache.log4j.*,
+		           		!org.apache.xml.utils.*,
+		           		!org.apache.xerces.*,
+		           		!org.apache.xpath.*,
+		           		!org.dom4j.*,
+		           		!org.jdom.*,
+		           		!org.joda.time.*,
+		           		!org.relaxng.datatype.*,
+		           		!org.springframework.context.*,
+		           		!org.springframework.web.context.*,
+		           		!org.osgi.framework.*;version="[1.0.0,2.0.0)",
+		           		!org.osgi.util.tracker.*;version="[1.0.0,2.0.0)",
+		           		!org.aspectj.*,
+		           		!org.mozilla.*,
+		           		!org.quartz.*,
+		           		!org.w3c.dom.*,
+		           		!sun.misc.*,
+		           		!org.hl7.*,
+		           		ch.qos.logback.*,
+		           		ca.uhn.fhir.model.dstu.valueset,
+		           		ca.uhn.fhir.model.primitive,
+		           		ca.uhn.fhir.model.dstu.api.*,
+		            	ca.uhn.fhir.model.dstu.composite.*,
+		            	ca.uhn.fhir.model.dstu.resource.*,
+		            	ca.uhn.fhir.model.primitaive.BoundCodeableConceptDt,
+		            	ca.uhn.fhir.rest.server.audit.*,
+		            	ca.uhn.fhir.rest.server.interceptor.AuditingInterceptor,
+		            	ca.uhn.fhir.rest.server.provider.*,
+		            	ca.uhn.fhir.model.dstu2.*,
+		            	ca.uhn.fhir.rest.server.provider.dstu2.*
+		           	</Private-Package>
+		           	<Import-Package>
+		           		*
+		           	</Import-Package>
+		           	<Embed-Dependency>
+			           	!antlr.*,
+			           	!bsh.*,
+			           	!com.mchange.v2.c3p0.*,
+			           	!net.sf.*,
+			           	!nu.xom.*,
+		           		!org.apache.commons.httpclient.*,
+		           		!org.apache.commons.vfs.*,
+		           		!org.apache.env.*,
+		           		!org.apache.oro.*,
+		           		!org.apache.regexp.*,
+		           		!org.apache.tools.*,
+		           		!org.apache.log4j.*,
+		           		!org.apache.xml.utils.*,
+		           		!org.apache.xerces.*,
+		           		!org.apache.xpath.*,
+		           		!org.dom4j.*,
+		           		!org.jdom.*,
+		           		!org.joda.time.*,
+		           		!org.relaxng.datatype.*,
+		           		!org.springframework.context.*,
+		           		!org.springframework.web.context.*,
+		           		!org.aspectj.*,
+		           		!org.mozilla.*,
+		           		!org.quartz.*,
+		           		!org.w3c.dom.*,
+		           		!sun.misc.*,
+			           	*;scope=compile|runtime
+		           	</Embed-Dependency>
+		          </instructions>
+		        </configuration>
+		    </plugin>
 		</plugins>
 		<resources>
 			<resource>
