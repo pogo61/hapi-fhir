@@ -383,11 +383,11 @@
 		           		ca.uhn.fhir.parser.*;resolution:=optional,
 		           		ca.uhn.fhir.rest.api.*;resolution:=optional,
 		           		ca.uhn.fhir.rest.client.*;resolution:=optional,
-		           		ca.uhn.fhir.context.*;resolution:=optional,
-		           		ca.uhn.fhir.model.base.resource.*;resolution:=optional,
+		           		ca.uhn.fhir.context.*;resolution:=optional
+		           		<!--ca.uhn.fhir.model.base.resource.*;resolution:=optional,
 		           		ca.uhn.fhir.model.api.*;resolution:=optional,
-		           		<!--  ca.uhn.fhir.model.dstu.valueset.*;resolution:=optional,-->
-		           		ca.uhn.fhir.model.view.*;resolution:=optional
+		           		  ca.uhn.fhir.model.dstu.valueset.*;resolution:=optional,
+		           		ca.uhn.fhir.model.view.*;resolution:=optional-->
 		           	</Private-Package>
 		           	<Import-Package>
 		           		!org.junit.*,
