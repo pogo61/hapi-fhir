@@ -219,6 +219,13 @@
 			<optional>true</optional>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>4.4.1</version>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 		
 	</dependencies>
 
